@@ -26,8 +26,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-	console.log(req.body);
-	res.send(req.method);
+	if(req.query.url){
+		request.post(req.query.url).form(req.body);
+	}
+	res.json(JSON.parse(req.body));
 });
 
 app.listen(port, () => {
