@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 app.get('/', (req, res) => {
+	console.log(req.body);
 	if(req.query.url){
 		request(req.query.url, (error, response, body) => {
 			res.json(JSON.parse(body));
